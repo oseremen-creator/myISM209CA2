@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="grid-container">
+        <div class="navigation-bar grid-item-row-1">
+            <div class="navigation-bar-left">
+                <div>
+                    <a href="/" >Home</a>
+                </div>
+                <div>
+                    <a href="/products-and-services/">Products and Services</a>
+                </div>
+                <div>
+                    <a href="/about-us/">About Us</a>
+                </div>
+            </div>
+            <div class="navigation-bar-right">
+                <div>
+                    <input type="search">
+                    <button>Search</button>
+                </div>
+                <div>
+                    {% if 'username' in session %}
+                        <a href="/logout/">Sign out</a>
+                    {% else %}
+                        <a href="/login/">Sign in</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="grid-item-row-2">
+            <h2 class="signup-title">{{title}}: {{information}}</h2>
+            <form method="post" action="/process-signup/">
+                <div class="form-grid">
+                     <label>first name: </label><input type="text" name="first name" placeholder="Enter first name here" required>
+                    <label>surname: </label><input type="text" name="surname" placeholder="Enter surname here" required>
+                    <label>date of birth: </label><input type="datetime-local" name="date of birth" placeholder="Enter date of birth here" required>
+                    <label>residential address: </label><input type="text" name="residential address" placeholder="Enter residential address here" required>
+                    <label>nationality: </label><input type="text" name="nationality" placeholder="Enter nationality here" required>
+                    <label>national identification number: </label><input type="text" name="national identification number" placeholder="national identification number" required>
+                     &nbsp;<input type="submit" value="Submit" class="button">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock%}
